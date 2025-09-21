@@ -15,6 +15,14 @@ export default function Home() {
           >
             Go to About Page
           </Link>
+          <br />
+          <br />
+          <Link 
+            href="/blog" 
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Go to blog Page
+          </Link>
         </div>
       </div>
     </div>

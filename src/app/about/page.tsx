@@ -1,13 +1,29 @@
+import RainEffect from '@/components/RainEffect';
+import BackButton from '@/components/BackButton';
+import DecorativeBorder from '@/components/DecorativeBorder';
+import AboutContent from '@/components/AboutContent';
+
 export default function About() {
   return (
-    <div className="min-h-screen bg-gray-100 py-12">
-      <div className="max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">About Me</h1>
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <p className="text-gray-700 text-lg">
-            This is the about page. You can add your personal information here.
-          </p>
-        </div>
+    <div className="h-screen overflow-hidden relative"
+      style={{
+        backgroundImage: "url('/images/暴雨将至.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed"
+      }}>
+      {/* 下雨特效 */}
+      <RainEffect />
+      
+      {/* 返回按钮 */}
+      <BackButton />
+      
+      {/* 主要内容区域 - 左侧 */}
+      <div className="absolute left-8 top-1/2 transform -translate-y-1/2 w-96 z-20">
+        <DecorativeBorder className="bg-black/20 backdrop-blur-sm">
+          <AboutContent />
+        </DecorativeBorder>
       </div>
     </div>
   )

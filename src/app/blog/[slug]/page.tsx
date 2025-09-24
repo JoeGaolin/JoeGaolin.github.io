@@ -1,15 +1,17 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getPostBySlug, getAllPosts } from '@/data/blog/posts';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -52,9 +54,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
         {post.image && (
           <div className="rounded-lg overflow-hidden mb-6">
-            <img
+            <Image
               src={post.image}
               alt={post.title}
+              width={800}
+              height={256}
               className="w-full h-64 object-cover"
             />
           </div>
@@ -96,7 +100,8 @@ export async function generateStaticParams() {
 
 // 生成页面元数据
 export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   
   if (!post) {
     return {

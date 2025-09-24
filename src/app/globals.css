@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #d92727;
+  --foreground: #e01919;
 }
 
 @theme inline {
@@ -14,13 +14,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #af2e2e;
+    --foreground: #b52525;
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--background) url('/images/rain.png') center center / cover no-repeat fixed;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }

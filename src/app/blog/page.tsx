@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllPosts } from '@/data/blog/posts';
 
 export default function BlogPage() {
@@ -23,9 +24,11 @@ export default function BlogPage() {
           >
             {post.image && (
               <div className="h-48 bg-gray-200 overflow-hidden">
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
+                  width={400}
+                  height={192}
                   className="w-full h-full object-cover"
                 />
               </div>

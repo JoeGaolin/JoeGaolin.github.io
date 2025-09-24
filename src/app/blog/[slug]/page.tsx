@@ -118,10 +118,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params;
   
-  // 解码URL编码的slug
-  const decodedSlug = decodeURIComponent(slug);
-  
-  const post = await getBlogPostBySlug(decodedSlug);
+  const post = await getBlogPostBySlug(slug);
   
   if (!post) {
     return {
